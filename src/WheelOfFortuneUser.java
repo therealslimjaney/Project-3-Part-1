@@ -1,6 +1,12 @@
 import java.util.Scanner;
 
+/**
+ * The 'WheelOfFortuneUser' class is a subclass of 'WheelOfFortune' that enables a human user to play the game via the command line
+ *
+ * @see WheelOfFortune
+ */
 public class WheelOfFortuneUser extends WheelOfFortune {
+
     /**
      * Prompts the player to enter a guess and validates the input.
      *
@@ -28,7 +34,11 @@ public class WheelOfFortuneUser extends WheelOfFortune {
 
         return charGuess;
     }
-
+    /**
+     * Implements the game logic for a human user playing Wheel of Fortune.
+     *
+     * @return A GameRecord.
+     */
     @Override
     public GameRecord play() {
         GameRecord record = new GameRecord();
@@ -54,6 +64,11 @@ public class WheelOfFortuneUser extends WheelOfFortune {
         return record;
     }
 
+    /**
+     * Determines if the user wants to play another game and resets the game state if necessary.
+     *
+     * @return boolean true if the user wants to play another game, false otherwise.
+     */
     @Override
     public boolean playNext() {
         if (phraseList.isEmpty()) {
@@ -75,12 +90,20 @@ public class WheelOfFortuneUser extends WheelOfFortune {
         return "WOFUser{}";
     }
 
+    /**
+     * Resets the game to its initial state with a new round.
+     */
     public void loadNewGame() {
         super.loadNewGame();
         phrase = randomPhrase();
         hiddenPhrase=getHiddenPhrase(phrase);
     }
 
+    /**
+     * The main method to start and play the Wheel of Fortune game with human user inputs
+     *
+     * @param args Command-line arguments
+     */
     public static void main(String [] args) {
         WheelOfFortuneUser userGame = new WheelOfFortuneUser();
         AllGamesRecord allGamesRecord = userGame.playAll();

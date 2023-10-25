@@ -1,28 +1,49 @@
 
 import java.util.ArrayList;
 import java.util.Objects;
-
+/**
+ * The 'WheelOfFortuneAI' class is a subclass of 'WheelOfFortune' that enables a AI players to play the game
+ */
 public class WheelOfFortuneAI extends WheelOfFortune {
-    private ArrayList<WOFPlayer> playerList = new ArrayList<>();
+    private ArrayList<WheelOfFortunePlayer> playerList = new ArrayList<>();
     private int playerIndex=0;
     private int phraseIndex=-1;
 
+    /**
+     * Constructs a WheelOfFortuneAI object with a default AI player.
+     */
     public WheelOfFortuneAI() {
         AISmartPlayer player = new AISmartPlayer();
         playerList.add(player);
     }
 
-    public WheelOfFortuneAI(WOFPlayer player) {
+    /**
+     * Constructs a WheelOfFortuneAI object with a clients player input
+     *
+     * @param player The AI player to add to the game.
+     */
+    public WheelOfFortuneAI(WheelOfFortunePlayer player) {
         playerList.add(player);
     }
 
-    public WheelOfFortuneAI(ArrayList<WOFPlayer> players) {
+    /**
+     * Constructs a WheelOfFortuneAI object with a list of AI players.
+     *
+     * @param players The list of AI players to participate in the game.
+     */
+    public WheelOfFortuneAI(ArrayList<WheelOfFortunePlayer> players) {
         playerList = players;
     }
 
+    /**
+     * Override of the getGuess method to get the next AI player's guess.
+     *
+     * @param previousGuesses A StringBuilder containing previous guesses made in the game.
+     * @return The next character guess made by the AI player.
+     */
     @Override
     char getGuess(StringBuilder previousGuesses) {
-        WOFPlayer player = playerList.get(playerIndex);
+        WheelOfFortunePlayer player = playerList.get(playerIndex);
         char nextGuess;
         do {
             nextGuess = player.nextGuess();
@@ -30,10 +51,15 @@ public class WheelOfFortuneAI extends WheelOfFortune {
         return nextGuess;
     }
 
+    /**
+     * Override of the play method to control the AI player's turn in the game.
+     *
+     * @return A GameRecord object
+     */
     @Override
     public GameRecord play() {
         GameRecord record = new GameRecord();
-        WOFPlayer player = playerList.get(playerIndex);
+        WheelOfFortunePlayer player = playerList.get(playerIndex);
         record.playerId = player.playerId();
         displayGameInstructions();
         while (guessesRemaining >= 0) {
@@ -58,6 +84,11 @@ public class WheelOfFortuneAI extends WheelOfFortune {
         return record;
     }
 
+    /**
+     * Override of the playNext method to move to the next game or player.
+     *
+     * @return True if the AI player can play the next game or with the next player, false otherwise.
+     */
     @Override
     public boolean playNext() {
         if (phraseIndex+1 < phraseList.size()) {
@@ -96,12 +127,20 @@ public class WheelOfFortuneAI extends WheelOfFortune {
         return Objects.hash(super.hashCode(), playerList, playerIndex, phraseIndex);
     }
 
+    /**
+     * Loads a new game, resetting game-specific state variables.
+     */
     public void loadNewGame() {
             super.loadNewGame(); // Reset game-specific state variables
             phrase = phraseList.get(phraseIndex);
             hiddenPhrase = getHiddenPhrase(phrase);
     }
 
+    /**
+     * The main method to demonstrate and run the WheelOfFortuneAI game.
+     *
+     * @param args Command-line arguments (not used in this program).
+     */
     public static void main(String[] args) {
 
         // Create 3 new players
@@ -110,7 +149,7 @@ public class WheelOfFortuneAI extends WheelOfFortune {
         AISmartPlayer smartPlayer = new AISmartPlayer();
 
         // Create an ArrayList to store the players
-        ArrayList<WOFPlayer> players = new ArrayList<>();
+        ArrayList<WheelOfFortunePlayer> players = new ArrayList<>();
 
         // Add the players to the ArrayList
         players.add(simplePlayer);
