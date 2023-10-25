@@ -11,7 +11,6 @@ abstract class Game {
      *
      * @return An AllGamesRecord object containing records of all the games played.
      */
-    //This method is called on a WOFGame object
     public AllGamesRecord playAll() {
         AllGamesRecord allGamesRecord = new AllGamesRecord();
         while (playNext()) {

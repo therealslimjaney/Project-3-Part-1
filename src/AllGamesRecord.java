@@ -60,7 +60,7 @@ public class AllGamesRecord {
      */
     public List<GameRecord> highGameList(int n) {
         ArrayList<GameRecord> list = new ArrayList<>(this.gameRecords);
-        Collections.sort(list);
+        Collections.sort(list, Collections.reverseOrder());
         return list.subList(0, Math.min(n, list.size())); // Ensure 'n' doesn't exceed the list size.
     }
 
@@ -73,14 +73,14 @@ public class AllGamesRecord {
      * @return A list of the top 'n' GameRecord instances.
      */
     public List<GameRecord> highGameList(String id, int n) {
-        ArrayList<GameRecord> list = new ArrayList<>(this.gameRecords);
+        ArrayList<GameRecord> list = new ArrayList<>();
         for (GameRecord record : gameRecords) {
             if (record.playerId.equals(id)) {
                 list.add(record);
             }
         }
-        Collections.sort(list);
-        return list.subList(0, Math.min(n, list.size())); // Ensure 'n' doesn't exceed the list size.
+        Collections.sort(list, Collections.reverseOrder());
+        return list.subList(0, Math.min(n, list.size()));
     }
 
     @Override
@@ -88,14 +88,6 @@ public class AllGamesRecord {
         return "AllGamesRecord{" +
                 "gameRecords=" + gameRecords +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AllGamesRecord that = (AllGamesRecord) o;
-        return Objects.equals(gameRecords, that.gameRecords);
     }
 
     @Override

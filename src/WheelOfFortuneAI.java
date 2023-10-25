@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.Objects;
 /**
- * The 'WheelOfFortuneAI' class is a subclass of 'WheelOfFortune' that enables a AI players to play the game
+ * The 'WheelOfFortuneAI' class is a subclass of 'WheelOfFortune' that enables AI players to play the game
  */
 public class WheelOfFortuneAI extends WheelOfFortune {
     private ArrayList<WheelOfFortunePlayer> playerList = new ArrayList<>();
@@ -131,7 +131,7 @@ public class WheelOfFortuneAI extends WheelOfFortune {
      * Loads a new game, resetting game-specific state variables.
      */
     public void loadNewGame() {
-            super.loadNewGame(); // Reset game-specific state variables
+            super.loadNewGame();
             phrase = phraseList.get(phraseIndex);
             hiddenPhrase = getHiddenPhrase(phrase);
     }
@@ -167,17 +167,19 @@ public class WheelOfFortuneAI extends WheelOfFortune {
         System.out.println(allGamesRecord);
 
         // Display highGameList for each player (showing all 3 games)
-        System.out.println("Simple Player highGameList: ");
+        System.out.println("\nSimple Player highGameList: ");
         System.out.println(allGamesRecord.highGameList("Simple Player", 3));
-        System.out.println("Average Player highGameList: ");
+        System.out.println("\nAverage Player highGameList: ");
         System.out.println(allGamesRecord.highGameList("Average Player", 3));
-        System.out.println("Smart Player highGameList: ");
+        System.out.println("\nSmart Player highGameList: ");
         System.out.println(allGamesRecord.highGameList("Smart Player", 3));
 
         // Display average of all nine games
+        System.out.println("\nAverage of all games: ");
         System.out.println(allGamesRecord.average());
 
         // Display average of each player (contest)
+        System.out.println("\nAverage of each player: ");
         System.out.println("Simple Player average: " + allGamesRecord.average("Simple Player"));
         System.out.println("Average Player average: " + allGamesRecord.average("Average Player"));
         System.out.println("Smart Player average: " + allGamesRecord.average("Smart Player"));

@@ -18,7 +18,7 @@ public class GameRecord implements Comparable<GameRecord> {
         if (this.score > o.score) {
             return 1;
         } else if (this.score < o.score) {
-            return 1;
+            return -1;
         }
         return 0;
     }

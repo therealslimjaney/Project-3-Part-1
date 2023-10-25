@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -87,6 +88,7 @@ public class WheelOfFortuneUser extends WheelOfFortune {
 
     @Override
     public String toString() {
+
         return "WOFUser{}";
     }
 
@@ -109,12 +111,15 @@ public class WheelOfFortuneUser extends WheelOfFortune {
         AllGamesRecord allGamesRecord = userGame.playAll();
 
         // Display AllGamesRecord object
+        System.out.println("\nAll games record object: ");
         System.out.println(allGamesRecord);
 
         //Display High Game List for 2 games
+        System.out.println("\nHigh game list for 2 games");
         System.out.println(allGamesRecord.highGameList(2));
 
         //Display average of games all games in AllGamesRecord object
+        System.out.println("\nAverage of games:");
         System.out.println(allGamesRecord.average());
     }
 }

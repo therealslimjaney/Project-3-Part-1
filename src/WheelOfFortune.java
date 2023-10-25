@@ -16,7 +16,7 @@ abstract class WheelOfFortune extends Game{
     protected String phrase;
     protected StringBuilder hiddenPhrase;
     protected StringBuilder previousGuesses;
-    protected int guessesRemaining=5;
+    protected int guessesRemaining=26;
     protected ArrayList<String> phraseList;
     protected char guess;
 
@@ -57,8 +57,8 @@ abstract class WheelOfFortune extends Game{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WheelOfFortune wof = (WheelOfFortune) o;
-        return guessesRemaining == wof.guessesRemaining && guess == wof.guess && roundCounter == wof.roundCounter && Objects.equals(phrase, wof.phrase) && Objects.equals(hiddenPhrase, wof.hiddenPhrase) && Objects.equals(previousGuesses, wof.previousGuesses) && Objects.equals(phraseList, wof.phraseList);
+        WheelOfFortune that = (WheelOfFortune) o;
+        return guessesRemaining == that.guessesRemaining && guess == that.guess && roundCounter == that.roundCounter && Objects.equals(phrase, that.phrase) && Objects.equals(hiddenPhrase, that.hiddenPhrase) && Objects.equals(previousGuesses, that.previousGuesses) && Objects.equals(phraseList, that.phraseList);
     }
 
     /**
@@ -188,7 +188,7 @@ abstract class WheelOfFortune extends Game{
     public void loadNewGame() {
         previousGuesses.setLength(0);
         roundCounter=0;
-        guessesRemaining=5;
+        guessesRemaining=26;
     }
 
     /**
