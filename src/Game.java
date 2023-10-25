@@ -1,3 +1,10 @@
+/**
+ * The abstract 'Game' class serves as a base for implementing various games.
+ * Subclasses provide implement the 'play' and 'playNext' methods.
+ *
+ * @see GameRecord
+ * @see AllGamesRecord
+ */
 abstract class Game {
     /**
      * Plays a series of games, records the results, and returns an AllGamesRecord object summarizing the set.
@@ -24,13 +31,18 @@ abstract class Game {
 
 
     /**
-     * Checks
-     * Subclasses of the 'Game' class are required to provide an implementation for this method.
+     * Checks if the next game should be played
+     * Subclasses of the 'Game' class are required to implement this method.
      *
      * @return True if the next game should be played, false otherwise.
      */
     public abstract boolean playNext();
 
+    /**
+     * Returns a string representation of the 'Game' object
+     *
+     * @return A string
+     */
     @Override
     public String toString() {
         return "Game{}";

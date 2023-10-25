@@ -2,21 +2,21 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class WOFAI extends WOF {
+public class WheelOfFortuneAI extends WheelOfFortune {
     private ArrayList<WOFPlayer> playerList = new ArrayList<>();
     private int playerIndex=0;
     private int phraseIndex=-1;
 
-    public WOFAI() {
+    public WheelOfFortuneAI() {
         AISmartPlayer player = new AISmartPlayer();
         playerList.add(player);
     }
 
-    public WOFAI(WOFPlayer player) {
+    public WheelOfFortuneAI(WOFPlayer player) {
         playerList.add(player);
     }
 
-    public WOFAI(ArrayList<WOFPlayer> players) {
+    public WheelOfFortuneAI(ArrayList<WOFPlayer> players) {
         playerList = players;
     }
 
@@ -87,7 +87,7 @@ public class WOFAI extends WOF {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        WOFAI wofai = (WOFAI) o;
+        WheelOfFortuneAI wofai = (WheelOfFortuneAI) o;
         return playerIndex == wofai.playerIndex && phraseIndex == wofai.phraseIndex && Objects.equals(playerList, wofai.playerList);
     }
 
@@ -118,7 +118,7 @@ public class WOFAI extends WOF {
         players.add(smartPlayer);
 
         // Create an AIGame that takes in an ArrayList of players in the constructor
-        WOFAI AIgame = new WOFAI(players);
+        WheelOfFortuneAI AIgame = new WheelOfFortuneAI(players);
 
         // Create AllGamesRecord object
         AllGamesRecord allGamesRecord = AIgame.playAll();

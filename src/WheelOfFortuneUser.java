@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class WOFUser extends WOF {
+public class WheelOfFortuneUser extends WheelOfFortune {
     /**
      * Prompts the player to enter a guess and validates the input.
      *
@@ -67,7 +67,7 @@ public class WOFUser extends WOF {
             loadNewGame();
             return true;
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class WOFUser extends WOF {
     }
 
     public static void main(String [] args) {
-        WOFUser userGame = new WOFUser();
+        WheelOfFortuneUser userGame = new WheelOfFortuneUser();
         AllGamesRecord allGamesRecord = userGame.playAll();
 
         // Display AllGamesRecord object

@@ -6,7 +6,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-abstract class WOF extends Game{
+/**
+ * The 'WheelOfFortune' class is an abstract class that serves as the basis for implementing Wheel of Fortune games.
+ * Subclasses must implement the abstract method 'getGuess'
+ *
+ * @see Game
+ */
+abstract class WheelOfFortune extends Game{
     protected String phrase;
     protected StringBuilder hiddenPhrase;
     protected StringBuilder previousGuesses;
@@ -15,11 +21,20 @@ abstract class WOF extends Game{
     protected char guess;
 
     protected int roundCounter=0;
-    public WOF(){
+
+    /**
+     * Constructs a new instance of the 'WheelOfFortune' game, initializing its state, including phrases and previous guesses.
+     */
+    public WheelOfFortune(){
             phraseList=readPhrases();
             previousGuesses = new StringBuilder();
     }
 
+    /**
+     * Returns a string representation of the 'WheelOfFortune' game object
+     *
+     * @return A string
+     */
     @Override
     public String toString() {
         return "WOF{" +
@@ -32,15 +47,24 @@ abstract class WOF extends Game{
                 ", roundCounter=" + roundCounter +
                 '}';
     }
-
+    /**
+     * Indicates whether some other object is "equal to" this one
+     *
+     * @param o The reference object with which to compare.
+     * @return true if this object is equal to the 'o' argument; false otherwise.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WOF wof = (WOF) o;
+        WheelOfFortune wof = (WheelOfFortune) o;
         return guessesRemaining == wof.guessesRemaining && guess == wof.guess && roundCounter == wof.roundCounter && Objects.equals(phrase, wof.phrase) && Objects.equals(hiddenPhrase, wof.hiddenPhrase) && Objects.equals(previousGuesses, wof.previousGuesses) && Objects.equals(phraseList, wof.phraseList);
     }
 
+    /**
+     * Returns a hash code value for the 'WheelOfFortune' game object.
+     * @return int hashCode
+     */
     @Override
     public int hashCode() {
         return Objects.hash(phrase, hiddenPhrase, previousGuesses, guessesRemaining, phraseList, guess, roundCounter);
@@ -124,7 +148,7 @@ abstract class WOF extends Game{
     }
 
     /**
-     * Updates previousGuesses with both lowercase and uppercase and calls updateHiddenPhrase
+     * Updates previousGuesses with both lowercase and uppercase and calls updateHiddenPhrase.
      */
     public void processCorrect() {
         this.previousGuesses.append(this.guess);
@@ -133,7 +157,7 @@ abstract class WOF extends Game{
     }
 
     /**
-     * Updates previousGuesses with both lowercase and uppercase
+     * Updates previousGuesses with both lowercase and uppercase.
      */
     public void processIncorrect() {
         this.previousGuesses.append(this.guess);
@@ -157,14 +181,23 @@ abstract class WOF extends Game{
         }
     }
 
+    /**
+     * Resets the game to its initial state with a new round.
+     * Subclasses must extend this for resetting the game phrases
+     */
     public void loadNewGame() {
         previousGuesses.setLength(0);
         roundCounter=0;
         guessesRemaining=5;
     }
+
+    /**
+     * Displays game instructions for the player.
+     */
     public void displayGameInstructions() {
         System.out.println("\n=================== Welcome to the Wheel of Fortune Game! ===================\nObjective: Try to guess the hidden phrase by suggesting letters one at a time.\nInstructions:\n1. Enter a letter to make a guess (e.g., \"a\" or \"B\").\n2. You will receive feedback after each guess.\n3. You can make up to " + guessesRemaining + "  incorrect guesses.\n4. Keep guessing until you either guess the phrase correctly or run out of guesses.\n -GOOD LUCK!");
     }
+
     /**
      * Prints the current state of the game for player
      */
@@ -172,6 +205,9 @@ abstract class WOF extends Game{
         System.out.println("\n<---ROUND " + roundCounter + "--->\nPhrase:\t" + hiddenPhrase + "\nPrevious Guesses: " + previousGuesses + "\n#Guesses Remaining: " + guessesRemaining);
     }
 
+    /**
+     * Displays the game result when the player has won.
+     */
     public void displayGameResult() {
         System.out.println("Congratulations! You have won!\n");
         System.out.println("<----GAME SUMMARY---->\nPhrase:\t" + hiddenPhrase + "\nScore: " + guessesRemaining + " (defined as guesses remaining)");
