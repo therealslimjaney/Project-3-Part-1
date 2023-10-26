@@ -140,7 +140,7 @@ abstract class WheelOfFortune extends Game{
      */
     public void processGuess() {
         String stringGuess = String.valueOf(this.guess);
-        if (this.phrase.contains(stringGuess) || this.phrase.contains(stringGuess.toUpperCase())) {
+        if (this.phrase.contains(stringGuess.toLowerCase()) || this.phrase.contains(stringGuess.toUpperCase())) {
             processCorrect();
         } else {
             processIncorrect();
