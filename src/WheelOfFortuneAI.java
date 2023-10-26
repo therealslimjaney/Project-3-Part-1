@@ -23,6 +23,7 @@ public class WheelOfFortuneAI extends WheelOfFortune {
      * @param player The AI player to add to the game.
      */
     public WheelOfFortuneAI(WheelOfFortunePlayer player) {
+
         playerList.add(player);
     }
 
@@ -32,6 +33,7 @@ public class WheelOfFortuneAI extends WheelOfFortune {
      * @param players The list of AI players to participate in the game.
      */
     public WheelOfFortuneAI(ArrayList<WheelOfFortunePlayer> players) {
+
         playerList = players;
     }
 
@@ -124,6 +126,7 @@ public class WheelOfFortuneAI extends WheelOfFortune {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(super.hashCode(), playerList, playerIndex, phraseIndex);
     }
 

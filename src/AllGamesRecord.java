@@ -3,9 +3,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The `AllGamesRecord` class represents a collection of `GameRecord` objects and provides various methods
+ * for managing and analyzing game records.
+ */
 public class AllGamesRecord {
     private ArrayList<GameRecord> gameRecords;
 
+    /**
+     * Constructs a new `AllGamesRecord` object with an empty list of game records.
+     */
     public AllGamesRecord() {
 
         gameRecords = new ArrayList<GameRecord>();
@@ -92,6 +99,7 @@ public class AllGamesRecord {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(gameRecords);
     }
 }

@@ -1,4 +1,3 @@
-import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -76,7 +75,7 @@ public class WheelOfFortuneUser extends WheelOfFortune {
             System.out.println("\nSorry, we are all out of game phrases.\n"); // Stop the game if the phraseList is empty.
             return false;
         }
-        System.out.println("\nPlay another game? Enter 'y' or 'n': "); // Need error handling here
+        System.out.println("\nPlay another game? Enter 'y' or 'n': ");
         Scanner scanner = new Scanner(System.in);
         String playNext = scanner.next().toLowerCase();
         if (playNext.equals("y")) {
